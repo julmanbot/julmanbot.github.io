@@ -4,7 +4,7 @@ $(window).on("load", function () {
     customElements.define("wait-js", Wait, { extends: "div" });
 
     if (window.location.search) {
-        const query = new URLSearchParams();
+        const query = new URLSearchParams(window.location.search);
         const popup = $("span#popup");
         const popup_content = $("div#popup-content");
 

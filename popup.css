@@ -1,0 +1,50 @@
+span#popup {
+    background: transparent;
+    display: none;
+    height: 100%;
+    position: fixed;
+    text-align: center;
+    top: 0;
+    width: 100%;
+    z-index: 10000;
+}
+
+div#popup-content {
+    background-color: rgb(80, 80, 80);
+    display: inline-block;
+    height: auto;
+    max-width: 551px;
+    min-height: 100px;
+    vertical-align: middle;
+    width: 60%;
+    margin: 5%;
+    box-sizing: content-box;
+    box-shadow: 0 0 20px black;
+    position: relative;
+    border-radius: 8px;
+    padding: 15px 5%;
+    border: 1px black solid;
+}
+
+.popupCloseButton {
+    background-color: rgb(80, 80, 80);
+    border: 3px solid #999;
+    border-radius: 50px;
+    box-shadow: 0 0 5px black;
+    cursor: pointer;
+    display: inline-block;
+    font-family: arial;
+    font-weight: bold;
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    font-size: 25px;
+    line-height: 30px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+}
+
+.popupCloseButton:hover {
+    background-color: rgb(100, 100, 100);
+}

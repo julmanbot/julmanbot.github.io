@@ -1,0 +1,10 @@
+[
+    {
+        "title":"Version 1.1.7",
+        "content": "<p>Voici les modifications faites durant cette mise à jour</p><br><ul><li>Ajout d'une api (canvas) pour générer des images,</li><li>AJout d'une commande \"beauti [user]\" pour ce voir dans l'espace !</li><li>Légère modification des commande sans <code>RichEmbed</code>.</li></ul><br><strong>Merci !</strong>"
+    },
+    {
+        "title": "Version 1.1.6",
+        "content": "<p>Voici les modifications faites dans cette mise à jour : <br></p><ul><li>Ajout de la commande \"warns\"</li><li>Optimisation du bot</li><li></li><li>...</li></ul><p><strong>Je vous informe tous de suite que le prochain patch note serra plus détailé !</strong></p>"
+    }
+]

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>JulManBOT • Status</title>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+        <script src="../text-main-links.load.js"></script>
+        <script src="../Wait.js"></script>
+        <script>
+            (function () { $(window).on('load', function () { customElements.define("wait-js", Wait, { extends: "div" }) }); })();
+        </script>
+
+        <link rel="stylesheet" href="../header.css">
+        <link rel="stylesheet" href="../index.css">
+        <link rel="stylesheet" href="../img.css">
+        <link rel="stylesheet" href="../popup.css">
+    </head>
+
+    <body>
+        <header class="doc-head">
+            <img src="https://cdn.discordapp.com/app-icons/615944185190547456/c54dc2b9b93ca328cb2e399ab20a34c4.png?size=256"
+                alt="" class="img-round" width="30px">
+            <text-head>JulManBOT</text-head>
+            <a href="../?invitation=true" class="link">Invitation</a>
+            <a href="../support" class="link">Support</a>
+            <a href="" class="link">Status</a>
+        </header>
+        <div id="content">
+            <div class="path">
+                <a style="color: coral" href="..">JulManBOT</a>
+                /
+                <a style="color: coral;" href="">Status</a>
+                /
+            </div>
+            <h1>Voici quelque informations sur le bot</h1>
+            <script>
+                fetch("http://176.148.164.20:2555/api/status")
+                    .then(res => res.json())
+                    .then(async (res) => {
+                        $("div#status")
+                            .html(`<strong>${res.bot.name} (${res.tag})</strong>
+                                                <ul>
+                                                    <li>
+                                                        Serveurs :
+                                                        <strong>${res.guilds_count} serveurs</strong>
+                                                    </li>
+                                                    <li>
+                                                        Membres :
+                                                        <strong>${res.users_count} utilisateurs</strong>
+                                                    </li>
+                                                    <li>
+                                                        Ping :
+                                                        <strong>${Math.floor(res.ping)}ms</strong>
+                                                    </li>
+                                                    <li>
+                                                        Uptime :
+                                                        <strong>${(function () {
+                                    let r = '';
+
+                                    if (res.uptime_format.days) r += `${res.uptime_format.days} jour${res.uptime_format.days <= 1 ? '' : 's'} `;
+                                    if (res.uptime_format.hours) r += `${res.uptime_format.hours} heure${res.uptime_format.hours <= 1 ? '' : 's'} `;
+                                    if (res.uptime_format.minutes) r += `${res.uptime_format.minutes} minute${res.uptime_format.minutes <= 1 ? '' : 's'} `;
+                                    if (res.uptime_format.seconds) r += `${res.uptime_format.seconds} seconde${res.uptime_format.seconds <= 1 ? '' : 's'} `
+
+                                    return r;
+                                })()}</strong>
+                                                    </li>
+                                                    <li>
+                                                        Depuis :
+                                                        <strong>${res.readyAt}</strong>
+                                                    </li>
+                                                    <br/>
+                                                    Source : <strong>le bot lui-même</strong>
+                                                </ul>`
+                            ).css('font-size', 23)
+                    })
+                    .catch(() => $("div#status").html("<strong>⁉ Une erreur ! Il se peut que le bot soit hors-ligne 🔌 !</strong>"))
+            </script>
+            <div id="status">
+                <wait-js width="50"></wait-js>
+            </div>
+            <div>
+                <p>
+                    Ici, tu peux voir le status du bot (serveurs 🌐, membres 👪, ping 🏓, ...) et tu peux aussi si il est en ligne 🔌 !
+                    <h2>
+                        Comment ça marche ?
+                    </h2>
+                    <p>
+                        Le bot à 2 fonctions :
+                        <ol>
+                            <li>
+                                Bot Discord (logique)
+                            </li>
+                            <li>
+                                Hébergeur d'une web api
+                            </li>
+                        </ol>
+                        et c'est à cette 2 fonction que je vais m'intéresser...
+                        <br>
+                        Le bot revoie un fichier <code style="font-family: FiraCode;">JSON</code> lorsque qu'on demande le status via la web api :
+                        <style>
+                            @font-face {
+                                font-family: "FiraCode";
+                                src: url('./FiraCode.ttf');
+                            }
+                            key { color:blueviolet; font-family: FiraCode; } 
+                            value { color:burlywood; font-family: FiraCode; }
+                        </style>
+                        <pre style="font-family: FiraCode;">
+{
+    <key>"bot"</key>: {
+        <key>"name"</key>: <value>"JulManBOT"</value>
+    },
+    <key>"guilds_count"</key>: <value>0</value>,
+    <key>"users_count"</key>: <value>0</value>,
+    <key>"tag"</key>: <value>"JulManBOT#3327"</value>,
+    <key>"ping"</key>: <value>0</value>,
+    <key>"uptime"</key>: <value>0</value>,
+    <key>"uptime_format"</key>: {
+        <key>"days"</key>: <value>0</value>,
+        <key>"hours"</key>: <value>0</value>,
+        <key>"minutes"</key>: <value>0</value>,
+        <key>"seconds"</key>: <value>0</value>
+    },
+    <key>"readyAt"</key>: <value>""</value>
+}
+                        </pre>
+                        C'est très utile :
+                        <br>
+                        <key>"ping"</key> = <value>Le ping du bot</value>
+                        <br>
+                        ...
+                        <br>
+                        <br>
+                        Et le <code style="font-family: FiraCode">JavaScript</code> se gère de faire l'interface et la communication avec la web api.
+                    </p>
+                </p>
+            </div>
+        </div>
+        <style>
+            @keyframes wave {
+                from {
+                    margin-left: 0;
+                }
+
+                to {
+                    margin-left: -4128px;
+                }
+            }
+        </style>
+        <div
+            class="footer-wave"
+            style="background: url('../footer_wave.png') repeat-x; height: 190px; animation: wave 20s linear infinite; position: relative; top: 0px;">
+        </div>
+        <footer style="background: rgb(27, 27, 27); margin: 0;">
+            <br>
+            <div class="path" style="padding: 20px; text-align: center;">
+                <a style="color: coral" href="..">JulManBOT</a>
+                /
+                <a style="color: coral;" href="">Status</a>
+                /
+            </div>
+            <br>
+            <div style="text-align: center; padding: 10px;">
+                Fait par <a href="../support/users/JulMan.html" style="color: white;">JulMan</a>, avec ❤
+            </div>
+        </footer>
+    </body>
+
+</html>

@@ -1,0 +1,14 @@
+header.doc-head {
+    padding: 10px;
+    background: grey;
+    color: black;
+    border-bottom: 1px white solid;
+}
+
+body {
+    margin: 0px;
+}
+
+div#content {
+    margin: 20px;
+}

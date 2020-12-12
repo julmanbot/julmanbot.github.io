@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>JulManBOT</title>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="./node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+        <script src="text-main-links.load.js"></script>
+        <script src="Wait.js"></script>
+        <script src="load_msg.js"></script>
+        <script src="patch_note.js"></script>
+
+        <link rel="stylesheet" href="header.css">
+        <link rel="stylesheet" href="index.css">
+        <link rel="stylesheet" href="img.css">
+        <link rel="stylesheet" href="popup.css">
+    </head>
+
+    <body onload="reload_links();">
+        <span id="popup">
+            <div id="popup-content">
+                <div class="popupCloseButton">&times;</div>
+                <p>Clique sur ce lien pour ajouter <strong>JulManBOT</strong> sur ton serveur !</p><br><br><a
+                    href="https://julmanbot.github.io/?invitation=true&force=true"
+                    class="link" target="popup">🎉 Invitation 🎉</a>
+            </div>
+        </span>
+        <header class="doc-head">
+            <img src="https://cdn.discordapp.com/app-icons/615944185190547456/c54dc2b9b93ca328cb2e399ab20a34c4.png?size=256"
+                alt="" class="img-round" width="30px">
+            <text-head>JulManBOT</text-head>
+            <a href="?invitation=true" class="link">Invitation</a>
+            <a href="support" class="link">Support</a>
+            <a href="status" class="link">Status</a>
+        </header>
+        <div id="content">
+            <h1 style="text-align: center;">JulManBOT</h1>
+            <p style="text-align: center;">
+                <strong>•</strong> Projet créé et développé par <a href="support/users/JulMan.html" style="color: coral;">JulMan</a> <strong>•</strong>
+            </p>
+            <h2>INFORMATIONs</h2>
+            <table>
+                <tr>
+                    <td>
+                        <h3>✔ 💻 SUGGESTION !</h3>
+                        <h3>✔ ⚙ CONFIGURABLE !</h3>
+                        <h3>✔ 🧐 AIDE !</h3>
+                        <h3>✔ 🌤 MéTéO !</h3>
+                        <h3>✔ 📰 NEWS !</h3>
+                        <h3>... Bref tous pour plaire !</h3>
+                    </td>
+                    <td style="text-align: left; vertical-align: top;">
+                        <h3 style="color: white;">❔ Il y a un bug ou un problème ?</h3>
+                        <a style="color: white;" class="link" target="popup1"
+                            href="https://github.com/julmanbot/julmanbot.github.io/issues/new/choose">Créer un issue sur
+                            GitHub !</a>
+                        <br>
+                        <br>
+                        <h3 style="color: white;">🤖 Une suggestion sur le bot ?</h3>
+                        <a style="color: white;" class="link" target="popup1"
+                            href="https://github.com/julmanbot/julmanbot.github.io/issues/new/choose">Créer un issue sur
+                            GitHub !</a>
+                        <br>
+                        <br>
+                        <h2 style="color: red; margin-left: 20px;">LE BOT N'EST PAS TOUS LE TEMPS EN LIGNE !</h2>
+                    </td>
+                </tr>
+            </table>
+            <h2>Patch note</h2>
+            <div style="vertical-align: middle;" class="patch-note">
+                <p>Chargement...</p>
+                <wait-js width="50"></wait-js>
+            </div>
+        </div>
+        <style>
+            @keyframes wave {
+                from {
+                    margin-left: 0;
+                }
+        
+                to {
+                    margin-left: -4128px;
+                }
+            }
+        </style>
+        <div
+            style="background: url('footer_wave.png') repeat-x; height: 190px; animation: wave 20s linear infinite; position: relative; top: 10px;">
+        </div>
+        <footer style="background: rgb(27, 27, 27); margin: 0;">
+            <br>
+            <div class="path" style="padding: 20px; text-align: center;">
+                <a style="color: coral" href="">JulManBOT</a>
+                /
+            </div>
+            <br>
+            <div style="text-align: center; padding: 10px;">
+                Fait par <a href="support/users/JulMan.html" style="color: white;">JulMan</a>, avec ❤
+            </div>
+        </footer>
+    </body>
+
+</html>

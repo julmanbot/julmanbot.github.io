@@ -1,0 +1,2 @@
+/* <text-head/> - Require: jQuery */
+$(window).on("load", function(){$('text-head').html('<a href="https://julmanbot.github.io/" class="link" style="font-size: 100%; text-transform: initial">JulManBOT</a>')});

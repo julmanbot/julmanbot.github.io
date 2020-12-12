@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>JulManBOT • Support</title>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="../text-main-links.load.js"></script>
+        <script src="../Wait.js"></script>
+        <script>
+            (function () { $(window).on('load', function () { customElements.define("wait-js", Wait, { extends: "div" }) }); })();
+        </script>
+        <script src="../browserfs.js"></script>
+        <link rel="stylesheet" href="https://julmanbot.github.io/header.css">
+        <link rel="stylesheet" href="https://julmanbot.github.io/index.css">
+
+        <!-- Load require()... -->
+        <script>
+            (function run(a, r) { BrowserFS.install(window); BrowserFS.configure({ fs: "LocalStorage" }, function (e) { if (e) { throw e; } }); })(window, document);
+        </script>
+        <script src="load_support.js"></script>
+        <style>
+            a[href^="topics/"] {
+                color: white;
+            }
+        </style>
+    </head>
+
+    <body>
+        <header class="doc-head">
+            <img src="https://cdn.discordapp.com/app-icons/615944185190547456/c54dc2b9b93ca328cb2e399ab20a34c4.png?size=256"
+                alt="" class="img-round" width="30px">
+            <text-head>JulManBOT</text-head>
+            <a href="https://julmanbot.github.io/?invitation=true" class="link">Invitation</a>
+            <a href="https://julmanbot.github.io/support" class="link">Support</a>
+            <a href="https://julmanbot.github.io/status" class="link">Status</a>
+        </header>
+        <div id="content">
+            <h1>Bienvenue sur le support de JulManBOT !</h1>
+            <p>Si il y a un problème lié au bot ou au site, la solution est peut-être ici !</p>
+            <div class="catList">
+                <div class="clc" style="color: white">
+                    <ul>
+                        <li>
+                            <a href="topics/0/">Problème de connection avec Discord</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </body>
+
+</html>

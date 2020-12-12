@@ -1,0 +1,64 @@
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background: rgb(48, 48, 48);
+    color: white;
+}
+
+a.link {
+    color: black;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+table, tbody {
+    width: 100%;
+    text-align: auto;
+}
+
+a.link:hover {
+    color: black;
+    text-decoration: underline;
+}
+
+text-head {
+    font-weight: bolder;
+    font-size: 30px;
+    margin-right: 2%;
+}
+
+@media (max-width: 600px) {
+    a.link {
+        margin-top: 30px;
+    }
+}
+
+h2 {
+    text-transform: uppercase;
+    color: white;
+}
+
+h3 {
+    text-transform: uppercase;
+    color: white;
+}
+
+h1 {
+    text-transform: uppercase;
+    color: white;
+}
+
+div.pn {
+    padding-left: 20px;
+    margin-left: 20px;
+    border-left: 5px black solid;
+    transition: all .5s;
+}
+
+div.pn:hover {
+    padding-left: 20px;
+    margin-left: 10px;
+    border-left: 15px black solid;
+    transition: all .5s;
+}

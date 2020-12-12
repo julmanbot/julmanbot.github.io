@@ -2,4 +2,4 @@
  * JulManBOT, by JulMan (https://github.com/MinecraftJulMan)
  */
 
-!function(w,c,d,t){function f(...str){c.log(str)}const th=t;f.call(th,"-- JulManBOT --",'By JulMan (https://github.com/MinecraftJulMan)')}(window,console,document,this);
+!function(w,c,d,t){function f(...str){c.log(str)}const th=t;f.call(th,"--- JulManBOT ---",'By JulMan (https://github.com/MinecraftJulMan)')}(window,console,document,this);

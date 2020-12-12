@@ -8,7 +8,10 @@ $(window).on("load", function () {
         const popup = $("span#popup");
         const popup_content = $("div#popup-content");
 
-        if (query.has("invitation") && query.get("invitation") == "true") {
+        if (
+            query.has("invitation") && query.get("invitation") == "true" &&
+            !query.has("force")
+        ) {
             document.title = "JulManBOT : Invitation"
             popup.fadeIn("fast");
         } else if (

@@ -1,0 +1,1 @@
+function adl<HTML>(event: string, func: (this: HTML, e: Event) => void, elem: HTML): void;

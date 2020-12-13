@@ -1,8 +1,12 @@
 header.doc-head {
     padding: 10px;
+    width: 100%;
     background: grey;
     color: black;
     border-bottom: 1px white solid;
+    position: fixed;
+    top: 0%;
+    z-index: 9999;
 }
 
 body {
@@ -11,4 +15,13 @@ body {
 
 div#content {
     margin: 20px;
+    margin-top: 90px;
+}
+
+a {
+    text-shadow: none;
+}
+
+a:hover {
+    text-shadow: black 0 0 20px;
 }

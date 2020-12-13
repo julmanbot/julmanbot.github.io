@@ -1,0 +1,1 @@
+function adl(event,func,elem){elem.addEventListener(event,function(ev){"Tu n'es pas cessé être ici...";func.call(ev);});}

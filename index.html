@@ -6,13 +6,40 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>JulManBOT</title>
 
-        <script src="https://julmanbot.github.io/.display"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="./node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
         <script src="text-main-links.load.js"></script>
         <script src="Wait.js"></script>
         <script src="load_msg.js"></script>
         <script src="patch_note.js"></script>
+        
+        <script src="adl.js"></script>
+        <script src="header.js"></script>
+
+        <style>
+            @keyframes show {
+                from {
+                    padding-left: 6rem;
+                    padding-right: 0;
+                    opacity: 0;
+                }
+
+                to {
+                    padding-left: 0;
+                    padding-right: 6rem;
+                    opacity: 100%;
+                }
+            }
+
+            h2 {
+                animation: show 1s;
+            }
+
+            @media (max-width: 600px) {
+                h2 {
+                    animation: none;
+                }
+            }
+        </style>
 
         <link rel="stylesheet" href="header.css">
         <link rel="stylesheet" href="index.css">
@@ -25,8 +52,8 @@
             <div id="popup-content">
                 <div class="popupCloseButton">&times;</div>
                 <p>Clique sur ce lien pour ajouter <strong>JulManBOT</strong> sur ton serveur !</p><br><br><a
-                    href="https://julmanbot.github.io/?invitation=true&force=true"
-                    class="link" target="popup">🎉 Invitation 🎉</a>
+                    href="https://julmanbot.github.io/?invitation=true&force=true" class="link" target="popup">🎉
+                    Invitation 🎉</a>
             </div>
         </span>
         <header class="doc-head">
@@ -40,18 +67,50 @@
         <div id="content">
             <h1 style="text-align: center;">JulManBOT</h1>
             <p style="text-align: center;">
-                <strong>•</strong> Projet créé et développé par <a href="support/users/JulMan.html" style="color: coral;">JulMan</a> <strong>•</strong>
+                <strong>•</strong> Projet créé et développé par <a href="support/users/JulMan.html"
+                    style="color: coral;">JulMan</a> <strong>•</strong>
             </p>
             <h2>INFORMATIONs</h2>
             <table>
                 <tr>
                     <td>
-                        <h3>✔ 💻 SUGGESTION !</h3>
-                        <h3>✔ ⚙ CONFIGURABLE !</h3>
-                        <h3>✔ 🧐 AIDE !</h3>
-                        <h3>✔ 🌤 MéTéO !</h3>
-                        <h3>✔ 📰 NEWS !</h3>
-                        <h3>... Bref tous pour plaire !</h3>
+                        <style>
+                            h3.info {
+                                animation: show 1.4s cubic-bezier(.55, .06, .68, .19);
+                                transition: all .3s;
+                                border-left: 0 black solid;
+                                padding-right: 4rem;
+                            }
+
+                            h3.info:hover {
+                                transition: all .3s;
+                                padding-left: 3rem;
+                                border-left: 1rem black solid;
+                                padding-right: 0rem;
+                            }
+
+                            @media (max-width: 600px) {
+                                h3.info {
+                                    animation: none;
+                                    transition: 0;
+                                    border-left: none;
+                                    padding-right: 0;
+                                }
+
+                                h3.info:hover {
+                                    transition: none;
+                                    padding-left: 0;
+                                    border-left: none;
+                                    padding-right: 0;
+                                }
+                            }
+                        </style>
+                        <h3 class="info">✔ 💻 SUGGESTION !</h3>
+                        <h3 class="info">✔ ⚙ CONFIGURABLE !</h3>
+                        <h3 class="info">✔ 🧐 AIDE !</h3>
+                        <h3 class="info">✔ 🌤 MéTéO !</h3>
+                        <h3 class="info">✔ 📰 NEWS !</h3>
+                        <h3 class="info">... Bref tous pour plaire !</h3>
                     </td>
                     <td style="text-align: left; vertical-align: top;">
                         <h3 style="color: white;">❔ Il y a un bug ou un problème ?</h3>
@@ -81,7 +140,7 @@
                 from {
                     margin-left: 0;
                 }
-        
+
                 to {
                     margin-left: -4128px;
                 }

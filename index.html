@@ -11,7 +11,7 @@
         <script src="Wait.js"></script>
         <script src="load_msg.js"></script>
         <script src="patch_note.js"></script>
-        
+
         <script src="adl.js"></script>
         <script src="header.js"></script>
 
@@ -31,7 +31,7 @@
             }
 
             h2 {
-                animation: show 1s;
+                animation: show 1s cubic-bezier(.55, .06, .68, .19);
             }
 
             @media (max-width: 600px) {
@@ -41,6 +41,7 @@
             }
         </style>
 
+        <link rel="stylesheet" href="fonts/fonts.css">
         <link rel="stylesheet" href="header.css">
         <link rel="stylesheet" href="index.css">
         <link rel="stylesheet" href="img.css">
@@ -135,6 +136,55 @@
                 <wait-js width="50"></wait-js>
             </div>
         </div>
+
+        <div class="winter" style="display: none;">
+            <style>
+                div.winter {
+                    background: url('https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/socialmedia/apple/271/snowman_2603-fe0f.png') center;
+                    color: rgb(255, 0, 43);
+                    max-width: 20%;
+                    position: fixed;
+                    z-index: 9999;
+                    padding: 2rem;
+                    text-align: center;
+                    bottom: 0%;
+                    box-shadow: black 0 0 1rem;
+                    border-radius: 0 15px 0 0;
+                }
+
+                div.winter>button {
+                    background: rgb(105, 105, 105);
+                    text-align: end;
+                    cursor: pointer;
+                    margin-left: 100%;
+                    position: relative;
+                    bottom: 20px;
+                    border: none;
+                    border-radius: 15px;
+                    box-shadow: black 0 0 1rem;
+                }
+            </style>
+            <script>
+                $('load', function () {
+                    const o = new Image();
+                    o.src = 'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/socialmedia/apple/271/snowman_2603-fe0f.png';
+                    o.onload = function () {
+                        $('div.winter').fadeIn("slow");
+                        adl('click', function () {
+                            $('div.winter').fadeOut('fast');
+                        }, document.querySelector("div.winter > button"));
+                    }
+                })
+            </script>
+            <button title="Fermer cette fenêtre">
+                &times;
+            </button>
+            <br>
+            <br>
+            <br>
+            Hey ! C'est la saison de Noël 🎅 et du Nouvel An 🍾 !
+        </div>
+
         <style>
             @keyframes wave {
                 from {

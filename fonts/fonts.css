@@ -1,0 +1,13 @@
+/* Loading "Whitneyv Normal" */
+@font-face {
+    font-family: "Whitney";
+    font-style: normal;
+    src: url("whitney_medium.otf");
+}
+
+/* Loading "Whitneyv Italic" */
+@font-face {
+    font-family: "Whitney";
+    font-style: italic;
+    src: url("whitney_medium_italic.otf");
+}

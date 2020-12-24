@@ -52,9 +52,11 @@
         <span id="popup">
             <div id="popup-content">
                 <div class="popupCloseButton">&times;</div>
-                <p>Clique sur ce lien pour ajouter <strong>JulManBOT</strong> sur ton serveur !</p><br><br><a
-                    href="https://julmanbot.github.io/?invitation=true&force=true" class="link" target="popup">🎉
-                    Invitation 🎉</a>
+                <div id="popup-content-nobtn">
+                    <p>Clique sur ce lien pour ajouter <strong>JulManBOT</strong> sur ton serveur !</p><br><br><a
+                        href="https://julmanbot.github.io/?invitation=true&force=true" class="link" target="popup">🎉
+                        Invitation 🎉</a>
+                </div>
             </div>
         </span>
         <header class="doc-head">
@@ -64,6 +66,19 @@
             <a href="?invitation=true" class="link">Invitation</a>
             <a href="support" class="link">Support</a>
             <a href="status" class="link">Status</a>
+            <button class="login-btn">Mon compte</button>
+            <ul class="login-dropdown">
+                <li class="no-css">
+                    Vous n'êtes pas connecté
+                </li>
+                <li class="css">
+                    <a style="color: blue;" href="https://julmanbot.github.io/login?client_id=774580210481627147&target=https://julmanbot.github.io/">Se connecter</a>
+                </li>
+                <li class="no-css"></li>
+                <li class="no-css" style="margin-top: 20px;">
+                    Powered by Discord ⚡ (Fonctionne avec Discord)
+                </li>
+            </ul>
         </header>
         <div id="content">
             <h1 style="text-align: center;">JulManBOT</h1>

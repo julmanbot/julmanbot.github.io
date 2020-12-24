@@ -25,3 +25,41 @@ a {
 a:hover {
     text-shadow: black 0 0 20px;
 }
+
+button.login-btn {
+    right: 0;
+    border: 1px black solid;
+    border-radius: 2rem;
+    padding: .5rem 1rem;
+    cursor: pointer;
+    box-shadow: 0 0 .4rem black;
+    margin: auto;
+    margin-right: 2rem;
+    position: absolute;
+}
+
+ul.login-dropdown {
+    right: 0;
+    background: white;
+    padding: .5rem 1rem;
+    border-radius: 1rem;
+    border: 1px black solid;
+    display: none;
+    cursor: default;
+    margin-right: 2rem;
+    margin-bottom: 100rem;
+    position: absolute;
+}
+
+ul.login-dropdown li::marker {
+    content: "";
+}
+
+ul.login-dropdown li {
+    border-radius: 5px;
+    padding: 5px;
+}
+
+ul.login-dropdown li.css:hover {
+    background: rgb(187, 187, 187);
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>JulManBOT • Connection</title>
+
+        <!-- adl integration -->
+        <script async defer src="https://julmanbot.github.io/adl.js"></script>
+        <!-- login integration -->
+        <script async defer src="connection.js"></script>
+
+        <!-- Main script -->
+        <script>
+            document.querySelector('script').addEventListener('load', function () {
+                const search = new URLSearchParams(location.search);
+
+                if (search.has("client_id")) {
+                    if (search.has("target")) {
+                        login(new DiscordBot(`${search.get("client_id")}`), new DiscordClient(), `${search.get("target")}`);
+                    } else {
+                        document.querySelector('p').outerHTML = "Erreur : <code>Missing \"target\" args</code>";
+                    }
+                } else {
+                    document.querySelector('p').outerHTML = "Erreur : <code>Missing \"client_id\" args</code>";
+                }
+            });
+        </script>
+    </head>
+
+    <body>
+        <p id="error-view" style="display: none;"></p>
+    </body>
+
+</html>

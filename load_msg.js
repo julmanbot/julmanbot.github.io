@@ -2,29 +2,29 @@
 
 try {
     if (location.hash) {
-    const u = new URLSearchParams(location.hash.slice(1));
-    fetch("https://discord.com/api/users/@me", {
-        headers: {
-            authorization: `${u.get('token_type')} ${u.get('access_token')}`
-        }
-    })
-        .then(res => res.json())
-        .then((c) => {
-            const { id, username, avatar, discriminator, premium_type } = c;
-
-            if (id) {
-                $("#popup-content-nobtn").html(
-                    `<p><strong>${username}#${discriminator} - ${premium_type == 0 ? "Sans Discord Nitro" : premium_type == 1 ? "Avec Discord Nitro Classic" : "Avec Discord Nitro"}</strong><br><br>Est-ce que c'est vous ?<br><br><img src="https://media3.giphy.com/media/xT0xeuOy2Fcl9vDGiA/giphy.gif?cid=ecf05e47dn5xsfec9rskwti3mtr4v03kjb1db7ks9nzysjlw&rid=giphy.gif" width="200"><br><a href="?confirm=true&token=${u.get('access_token')}" class="link" style="color: green;">OUI, c'est moi !</a><a href="?confirm=false" class="link" style="color: red;">Non, c'est qui ?</a></p>`
-                );
-            } else {
-                $("#popup-content-nobtn").html(
-                    `<p>Une erreur est survenue, impossible de récupérer votre profile, vous devez vous reconnecter pour recréer une connection avec Discord. Ceci peut être dû à une révocation de l'autorisation de JulManBOT pour récupérer vos informations. Vous n'avez rien à craindre, les seuls trucs que je peut récupérer c'est l'ID, votre tag (nom d'utilisateur et discrimateur), votre avatar et votre niveau d'abonnement sur Discord (pas les informations de payment). Cliquer sur le lien ci-dessous pour vous connecter.<br><br><a href="https://julmanbot.github.io/login?client_id=774580210481627147&target=https://julmanbot.github.io" class="link">Se reconnecter</a></p>`
-                )
+        const u = new URLSearchParams(location.hash.slice(1));
+        fetch("https://discord.com/api/users/@me", {
+            headers: {
+                authorization: `${u.get('token_type')} ${u.get('access_token')}`
             }
-            $("span#popup").fadeIn('fast');
-            
-            // alert(`${username}#${discriminator} - ID : ${id} - Nitro : ${premium_type}`);
         })
+            .then(res => res.json())
+            .then((c) => {
+                const { id, username, avatar, discriminator, premium_type } = c;
+
+                if (id) {
+                    $("#popup-content-nobtn").html(
+                        `<p><strong>${username}#${discriminator} - ${premium_type == 0 ? "Sans Discord Nitro" : premium_type == 1 ? "Avec Discord Nitro Classic" : "Avec Discord Nitro"}</strong><br><br>Est-ce que c'est vous ?<br><br><img src="https://media3.giphy.com/media/xT0xeuOy2Fcl9vDGiA/giphy.gif?cid=ecf05e47dn5xsfec9rskwti3mtr4v03kjb1db7ks9nzysjlw&rid=giphy.gif" width="200"><br><a href="?confirm=true&token=${u.get('access_token')}" class="link" style="color: green;">OUI, c'est moi !</a><a href="?confirm=false" class="link" style="color: red;">Non, c'est qui ?</a></p>`
+                    );
+                } else {
+                    $("#popup-content-nobtn").html(
+                        `<p>Une erreur est survenue, impossible de récupérer votre profile, vous devez vous reconnecter pour recréer une connection avec Discord. Ceci peut être dû à une révocation de l'autorisation de JulManBOT pour récupérer vos informations. Vous n'avez rien à craindre, les seuls trucs que je peut récupérer c'est l'ID, votre tag (nom d'utilisateur et discrimateur), votre avatar et votre niveau d'abonnement sur Discord (pas les informations de payment). Cliquer sur le lien ci-dessous pour vous connecter.<br><br><a href="https://julmanbot.github.io/login?client_id=774580210481627147&target=https://julmanbot.github.io" class="link">Se reconnecter</a></p>`
+                    )
+                }
+                $("span#popup").fadeIn('fast');
+
+                // alert(`${username}#${discriminator} - ID : ${id} - Nitro : ${premium_type}`);
+            })
     }
 } catch { }
 
@@ -60,13 +60,9 @@ $(window).on("load", function () {
             query.has('logout')
         ) {
             if (query.get('logout') == "true") {
-                $("#popup-content-nobtn").html(
-                    `<p>Voulez-vous vraiment faire ceci ? Cette action ne peut être annulé sauf si vous reconnecter via le boutton "Mon compte"<br><br><button>Je confirme, je me déconnecte</button></p>`
-                ).children('button').click(function () {
-                    document.cookie = "token=";
-                    location.reload();
-                });
+                $("#popup-content-nobtn").html(`<p>Voulez-vous vraiment faire ceci ? Cette action ne peut être annulé sauf si vous reconnecter via le boutton "Mon compte"<br><br><button onclick="document.cookie='token=';location.reload();">Je confirme, je me déconnecte</button></p>`);
                 $('span#popup').fadeIn('fast');
+
             }
         }
 

@@ -66,6 +66,7 @@ $(window).on("load", function () {
                     document.cookie = "token=";
                     location.reload();
                 });
+                $('span#popup').fadeIn('fast');
             }
         }
 

@@ -60,7 +60,7 @@ $(window).on("load", function () {
             query.has('logout')
         ) {
             if (query.get('logout') == "true") {
-                $("#popup-content-nobtn").html(`<p>Voulez-vous vraiment faire ceci ? Cette action ne peut être annulé sauf si vous reconnecter via le boutton "Mon compte"<br><br><button onclick="document.cookie='token=';location.reload();">Je confirme, je me déconnecte</button></p>`);
+                $("#popup-content-nobtn").html(`<p>Voulez-vous vraiment faire ceci ? Cette action ne peut être annulé sauf si vous reconnecter via le boutton "Mon compte"<br><br><button onclick="document.cookie='token=';location.search = '';">Je confirme, je me déconnecte</button></p>`);
                 $('span#popup').fadeIn('fast');
 
             }

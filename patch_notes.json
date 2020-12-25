@@ -1,5 +1,9 @@
 [
     {
+        "title": "Version 1.2.0 MAJEUR",
+        "content": "<p>Voici les modifications faites durant cette mise à jour</p><br><ul><li>Ajout d'un système de connection au site</li><li>Reset de git</li></ul>"
+    },
+    {
         "title":"Version 1.1.7",
         "content": "<p>Voici les modifications faites durant cette mise à jour</p><br><ul><li>Ajout d'une api (canvas) pour générer des images,</li><li>AJout d'une commande \"beauti [user]\" pour ce voir dans l'espace !</li><li>Légère modification des commande sans <code>RichEmbed</code>.</li></ul><br><strong>Merci !</strong>"
     },

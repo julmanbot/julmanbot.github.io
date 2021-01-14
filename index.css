@@ -1,7 +1,12 @@
 body {
-    font-family: Whitney, Helvetica Neue, Helvetica,Arial,sans-serif;
+    font-family: Whitney, "Helvetica Neue", Helvetica, Arial,sans-serif;
     background: rgb(48, 48, 48);
     color: white;
+}
+
+*::-webkit-scrollbar
+*::-webkit-scrollbar-track {
+    border-radius: 20px;
 }
 
 a.link {

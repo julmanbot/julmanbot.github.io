@@ -98,52 +98,98 @@ $(window).on('load', function () {
                 'Authorization': `Bearer ${f['token']}`
             }
         }).then(function (res) {
-                return res.json();
-            })
+            return res.json();
+        })
             .then(function (json) {
-                    let { id, username, avatar, discriminator, premium_type, locale } = json;
-                    if (id) {
-                        $('ul.login-dropdown').children().first().html(`<img src="https://cdn.discordapp.com/avatars/${id}/${avatar}.png" width="24"></img>`);
-                        $('ul.login-dropdown').children().get(1).innerHTML = `${username}#${discriminator} - ${premium_type == 0 ? "Sans Discord Nitro 🛒" : premium_type == 2 ? "Avec Discord Nitro ✨" : "Avec Discord Nitro Classique 🎈"} - Langue : ${locale}`;
-                        $('ul.login-dropdown').children().get(1).classList.replace('css', 'no-css');
-                        $('ul.login-dropdown').children().get(2).innerHTML = `<a href="https://julmanbot.github.io/?logout=true" style="color: red;">Se déconnecter</a>`;
-                        $('ul.login-dropdown').children().get(2).classList.replace('no-css', 'css');
-                        $('ul.login-dropdown').children().get(3).innerHTML = `<div class="content"><div class="wait-animated" style="width:50px;height:50px;background:black;"></div></div><style>@keyframes wait-anim{from{top:0;left:0;}25%{top:0;left:50px;}50%{top:50px;left:50px;}75%{top:50px;left:0;}to{top:0;left:0;}}div.wait-animated{position:relative;animation:wait-anim infinite .7s;}div.content{width:100px;height:100px;}</style><p>Chargement des serveurs...</p>`;
-                        fetch("https://discord.com/api/users/@me/guilds", {
-                            headers: {
-                                'Authorization': `Bearer ${f['token']}`
-                            }
-                        }).then(async function (res) {
-                            /**
-                             * @type {{id:string,name:number|string,icon:string,owner:true|false,permissions:number,features:["INVITE_SPLASH"?,"VIP_REGIONS"?,"VANITY_URL"?,"VERIFIED"?,"PARTNERED"?,"COMMUNITY"?,"COMMERCE"?,"NEWS"?,"DISCOVERABLE"?,"FEATURABLE"?,"ANIMATED_ICON"?,"BANNER"?,"WELCOME_SCREEN_ENABLED"?],permissions_new:number|string}[]}
-                             */
-                            let j = await res.json();
+                let { id, username, avatar, discriminator, premium_type, locale } = json;
+                if (id) {
+                    $('ul.login-dropdown').children().first().html(`<img src="https://cdn.discordapp.com/avatars/${id}/${avatar}.png" width="24"></img>`);
+                    $('ul.login-dropdown').children().get(1).innerHTML = `${username}#${discriminator} - ${premium_type == 0 ? "Sans Discord Nitro 🛒" : premium_type == 2 ? "Avec Discord Nitro ✨" : "Avec Discord Nitro Classique 🎈"} - Langue : ${locale}`;
+                    $('ul.login-dropdown').children().get(1).classList.replace('css', 'no-css');
+                    $('ul.login-dropdown').children().get(1).setAttribute('title', '');
+                    $('ul.login-dropdown').children().get(2).setAttribute('title', '(Ctrl+C)');
+                    $('ul.login-dropdown').children().get(2).innerHTML = `<a href="https://julmanbot.github.io/?logout=true" style="color: red;">Se déconnecter</a>`;
+                    $('ul.login-dropdown').children().get(2).classList.replace('no-css', 'css');
+                    $('ul.login-dropdown').children().get(3).innerHTML = `<div class="content"><div class="wait-animated" style="width:50px;height:50px;background:black;"></div></div><style>@keyframes wait-anim{from{top:0;left:0;}25%{top:0;left:50px;}50%{top:50px;left:50px;}75%{top:50px;left:0;}to{top:0;left:0;}}div.wait-animated{position:relative;animation:wait-anim infinite .7s;}div.content{width:100px;height:100px;}</style><p>Chargement des serveurs...</p>`;
+                    fetch("https://discord.com/api/users/@me/guilds", {
+                        headers: {
+                            'Authorization': `Bearer ${f['token']}`
+                        }
+                    }).then(async function (res) {
+                        /**
+                         * @type {{id:string,name:number|string,icon:string,owner:true|false,permissions:number,features:["INVITE_SPLASH"?,"VIP_REGIONS"?,"VANITY_URL"?,"VERIFIED"?,"PARTNERED"?,"COMMUNITY"?,"COMMERCE"?,"NEWS"?,"DISCOVERABLE"?,"FEATURABLE"?,"ANIMATED_ICON"?,"BANNER"?,"WELCOME_SCREEN_ENABLED"?],permissions_new:number|string}[]}
+                         */
+                        let j = await res.json();
 
-                            if (res.ok) {
-                                $('ul.login-dropdown').children().get(3).innerHTML = ``;
+                        if (res.ok) {
+                            $('ul.login-dropdown').children().get(3).innerHTML = ``;
 
-                                j.forEach(function (server) {
-                                    fetch(`https://cdn.discordapp.com/icons/${server.id}/${server.icon}.${server.features.includes("ANIMATED_ICON") ? "gif" : "png"}`).then((res) => {
-                                        let url;
-                                        if (res.ok) {
-                                            url = `https://cdn.discordapp.com/icons/${server.id}/${server.icon}.${server.features.includes("ANIMATED_ICON") ? "gif" : "png"}`;
-                                        } else {
-                                            url = `https://cdn.discordapp.com/icons/${server.id}/${server.icon}.png`;
-                                        }
-                                        $('ul.login-dropdown').children().get(3).innerHTML += `<span arial-title="${server.name}" class="tooltip" arial-part="${server.features.includes('PARTNERED')}"><img src="${url}" width="48" style="border-radius: 100%; margin:5px" class="tooltip"></span>`;
-                                    });
-                                });
-                            } else {
-                                $('ul.login-dropdown').children().get(3).innerHTML = `<strong>Impossible de charger vos serveurs ! <img src="https://cdn.discordapp.com/emojis/765674085786714163.gif" style="width:1.375em;vertical-align:bottom;"></strong>`;
-                            }
-                        });
-                    }
-                });
+                            j.sort(function (a, b) {
+                                return (a.name.toLowerCase() < b.name.toLowerCase() ? -1 : a.name.toLowerCase() > b.name.toLowerCase() ? 1 : 0);
+                            });
+                            console.log(`[SERVEURS] Vos serveurs (${j.length}) : `, j);
+
+                            j.forEach(async function (server) {
+                                let res = await fetch(`https://cdn.discordapp.com/icons/${server.id}/${server.icon}.${server.features.includes("ANIMATED_ICON") ? "gif" : "png"}`);
+
+                                let url;
+                                if (res.ok) {
+                                    url = `https://cdn.discordapp.com/icons/${server.id}/${server.icon}.${server.features.includes("ANIMATED_ICON") ? "gif" : "png"}`;
+                                } else {
+                                    url = `https://cdn.discordapp.com/icons/${server.id}/${server.icon}.png`;
+                                }
+
+                                $('ul.login-dropdown').children().get(3).innerHTML += `<span arial-title="${server.name}${server.owner ? " (propriétaire)" : ""}" class="tooltip" arial-part="${server.features.includes('PARTNERED')}"><img src="${url}" width="48" style="border-radius: 100%; margin:5px" class="tooltip"></span>`;
+                            });
+                        } else {
+                            $('ul.login-dropdown').children().get(3).innerHTML = `<strong>Impossible de charger vos serveurs ! <img src="https://cdn.discordapp.com/emojis/765674085786714163.gif" style="width:1.375em;vertical-align:bottom;"></strong>`;
+                        }
+                    });
+                }
+            });
     }
 
     adl('click', function (e) {
         $('ul.login-dropdown').fadeToggle('fast')
     }, document.querySelector('button.login-btn'));
+
+    document.querySelector('li#log').setAttribute('title', '(Ctrl+C)');
+
+    adl('keyup', async function (e) {
+        if (e.key == 'c' && e.altKey) {
+            e.preventDefault();
+            document.querySelector("button.login-btn").click();
+            return;
+        }
+
+        if (e.key == 'c' && e.ctrlKey) {
+            e.preventDefault();
+            if (f['token']) {
+                await fetch('https://discord.com/api/users/@me', {
+                    headers: {
+                        "Authorization": `Bearer ${f['token']}`
+                    }
+                }).ok;
+
+                let log = document.body.appendChild(document.createElement('a'));
+
+                log.href = 'https://julmanbot.github.io/?logout=true';
+                log.click();
+            } else {
+                let log = document.body.appendChild(document.createElement('a'));
+
+                log.href = 'https://julmanbot.github.io/login?client_id=774580210481627147&target=https://julmanbot.github.io/';
+                log.click();
+            }
+            return;
+        }
+    }, document);
+
+    adl('keypress', function (e) {
+        e.preventDefault();
+    }, document);
+
+    document.querySelector("button.login-btn").setAttribute('title', "Ouvre le menu du compte (Alt+C)");
 
     let style = document.createElement('style');
 
@@ -180,5 +226,5 @@ $(window).on('load', function () {
 
     document.head.appendChild(style);
 
-    !function(){["%c      _         _  __  __                ____    ___  _____ \n     | | _   _ | ||  \\/  |  __ _  _ __  | __ )  / _ \\|_   _|\n  _  | || | | || || |\\/| | / _` || '_ \\ |  _ \\ | | | | | |  \n | |_| || |_| || || |  | || (_| || | | || |_) || |_| | | |  \n  \\___/  \\__,_||_||_|  |_| \\__,_||_| |_||____/  \\___/  |_|  \n\nJulManBOT \n\n\n%cEuh... Tu sais ce que tu fait ? Si oui, rejoint nous ! 😁"].forEach((v) => console.log(v, "color:#32c5f2;font-size:1.2rem;","color:#000;font-size:1.2rem;font-familly:\"Whitney\""))}();
+    !function () { ["%c      _         _  __  __                ____    ___  _____ \n     | | _   _ | ||  \\/  |  __ _  _ __  | __ )  / _ \\|_   _|\n  _  | || | | || || |\\/| | / _` || '_ \\ |  _ \\ | | | | | |  \n | |_| || |_| || || |  | || (_| || | | || |_) || |_| | | |  \n  \\___/  \\__,_||_||_|  |_| \\__,_||_| |_||____/  \\___/  |_|  \n\nJulManBOT \n\n\n%cEuh... Tu sais ce que tu fait ? Si oui, rejoint nous ! 😁"].forEach((v) => console.log(v, "color:#32c5f2;font-size:1.2rem;", "color:#000;font-size:1.2rem;font-familly:\"Whitney\"")) }();
 });

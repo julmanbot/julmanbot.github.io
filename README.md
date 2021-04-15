@@ -3,6 +3,9 @@
 <br />
 Sans, mon site n'existerais pas !
 
+## Information
+> ***Ce site serra bien déprécié, migré vers [un autre site](https://bot.julman.fr)***
+
 ## Introduction
 
 Alors pour commencer, ceci, contrairement à d'autre qui le pense, ce n'est pas le code source du bot, c'est le code source du site du bot. **C'est très différent 😂 !**

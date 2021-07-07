@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/julmanbot/julmanbot.github.io#readme",
   "dependencies": {
-    "@types/jquery": "^3.5.3",
+    "@types/jquery": "^3.5.6",
     "@webcomponents/webcomponentsjs": "^2.4.4",
     "fs": "0.0.1-security"
   }
